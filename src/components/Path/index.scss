@@ -1,0 +1,30 @@
+.path-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 3.25rem;
+    width: 100%;
+    padding: 0 2rem;
+    background-color: #fff;
+
+    .path-left {
+        display: flex;
+        align-items: center; //flex-end
+        justify-content: flex-start;
+        font-family: opensans;
+        
+        .indi-paths {
+            display: flex;
+            align-items: center; //flex-end
+            justify-content: flex-start;
+            // background-color: red;
+            
+            .path-navicon {
+                height: 1.5rem;
+            }
+
+            &:first-child {color: #23496c;font-size: 1.25rem;font-weight: 900;}
+            &:nth-child(2) {color: #191d23;font-size: 1.1rem;font-weight: 900;}
+        }
+    }
+}
