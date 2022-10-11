@@ -1,5 +1,5 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 import './index.scss'
 //assests
 import detailsIcon from '../../../assets/icons/vector.svg'
@@ -8,6 +8,12 @@ import checkIcon from '../../../assets/icons/check_ring.svg'
 import historyIcon from '../../../assets/icons/history.svg'
 
 const Nav = () => {
+
+  const nav = useNavigate()
+  useEffect(() => {
+    nav('code')
+  }, [])
+
   return (
     <div className='nav-head-container'>
       <div className="nav-head-left">

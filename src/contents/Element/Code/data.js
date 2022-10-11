@@ -1,8 +1,9 @@
 import React from 'react'
+import './styles/data.scss'
 
 const Data = () => {
   return (
-    <div>
+    <div className='codedata-container'>
       DATA
     </div>
   )

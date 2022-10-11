@@ -20,7 +20,9 @@ const Group = () => {
     })
     .then((res) => res)
     .then(async (getData) => {
+      const data = await getData.json()
       if (getData.status === 200) {
+        localStorage.setItem('warehouse-data', JSON.stringify(data))
         nav(`${selectedHouse}`);
       }
     });

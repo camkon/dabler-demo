@@ -40,9 +40,8 @@ const Container = styled.div`
 
 const OutletContainer = styled.div`
   height: auto;
-  height: 200vh;
   width: calc(100% - 4rem);
-  // padding: 2.5rem;  
+  padding-bottom: 2.5rem;  
   margin: 0 2.5rem 0 2rem;  
   // background-color: red;
   box-sizing: border-box;

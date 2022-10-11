@@ -1,19 +1,17 @@
 .elements-container {
     height: auto;
     width: 100%;
-    background-color: red;
 
     .ele-top-container {
         display: flex;
         align-items: center;
         justify-content: space-between;
         height: 30rem;
-        background-color: green;
+        margin: 1rem 0;
     }
 
     .ele-bottom-container {
         height: auto;
         width: 100%;
-        background-color: orange;
     }
 }
