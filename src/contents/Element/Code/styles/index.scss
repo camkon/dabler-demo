@@ -1,0 +1,19 @@
+.elements-container {
+    height: auto;
+    width: 100%;
+    background-color: red;
+
+    .ele-top-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 30rem;
+        background-color: green;
+    }
+
+    .ele-bottom-container {
+        height: auto;
+        width: 100%;
+        background-color: orange;
+    }
+}
