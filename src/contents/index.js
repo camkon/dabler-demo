@@ -7,14 +7,7 @@ import { PathContext } from '../utils/pathContext'
 
 const Layout = () => {
 
-  const navigate = useNavigate()
   const path = []
-
-  const loc = useLocation()
-
-  useEffect(() => {
-    console.log(loc.state);
-  })
 
   return (
     <Container>
@@ -43,7 +36,6 @@ const OutletContainer = styled.div`
   width: calc(100% - 4rem);
   padding-bottom: 2.5rem;  
   margin: 0 2.5rem 0 2rem;  
-  // background-color: red;
   box-sizing: border-box;
 `
 

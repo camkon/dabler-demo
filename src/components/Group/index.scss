@@ -22,4 +22,18 @@
             background-color: #eee;
         }
     }
+
+    .action-loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0; left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: #7e7e7e41;
+        font-size: 1.25rem;
+        cursor: wait;
+        z-index: 15;
+    }
 }

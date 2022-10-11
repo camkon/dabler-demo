@@ -6,8 +6,10 @@ import folderIcon from '../../assets/icons/folder.svg'
 const Group = () => {
   const nav = useNavigate();
   const [selectedHouse, setSelectedHouse] = useState("");
+  const [loading, setLoading] = useState(false)
 
   const getWarehouseData = (id) => {
+    setLoading(true)
     fetch("https://transform.dabler.app/api/test/getwarehouseitems", {
       method: "POST",
       headers: {
@@ -23,7 +25,10 @@ const Group = () => {
       const data = await getData.json()
       if (getData.status === 200) {
         localStorage.setItem('warehouse-data', JSON.stringify(data))
+        setLoading(false)
         nav(`${selectedHouse}`);
+      }else {
+        setLoading(false)
       }
     });
   };
@@ -60,6 +65,7 @@ const Group = () => {
         <img src={folderIcon} alt="folder" />
         Warehouse 3
       </div>
+      {loading && <div className='action-loading'></div>}
     </div>
   );
 };

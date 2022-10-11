@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import './index.scss'
+import { ElementContext } from '../../../utils/elementContext'
 //assests
 import detailsIcon from '../../../assets/icons/vector.svg'
 import codeIcon from '../../../assets/icons/code.svg'
@@ -10,9 +11,40 @@ import historyIcon from '../../../assets/icons/history.svg'
 const Nav = () => {
 
   const nav = useNavigate()
+  const {codeCodeData, codeTableData} = useContext(ElementContext)
+  const [codeData, setCodeData] = codeCodeData
+  const [codeTable, setTable] = codeTableData
+  const [loading, setLoading] = useState(false)
+
   useEffect(() => {
     nav('code')
   }, [])
+
+  const runTest = () => {
+    setLoading(true)
+    fetch("https://transform.dabler.app/api/test/runquery", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        query: `${codeData}`,
+        // query: "customer_vw",
+      }),
+    })
+    .then((res) => res)
+    .then(async (getData) => {
+      const data = await getData.json()
+      if (getData.status === 200) {
+        // localStorage.setItem('table-data', JSON.stringify(data))
+        setLoading(false)
+        setTable(data)
+      }else {
+        setLoading(false)
+      }
+    });
+  }
 
   return (
     <div className='nav-head-container'>
@@ -31,7 +63,8 @@ const Nav = () => {
         </NavLink>
       </div>
       <div className="nav-head-right">
-        <button className='action-button'>TEST RUN</button>
+        <button className='action-button' onClick={runTest}>TEST RUN</button>
+        {loading && <div className='action-loading'></div>}
       </div>
     </div>
   )

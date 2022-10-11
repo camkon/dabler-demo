@@ -1,13 +1,33 @@
-import { Outlet } from 'react-router-dom'
-import Nav from './Nav'
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
+import styled from 'styled-components'
+import Nav from "./Nav";
+
+import { ElementContext } from "../../utils/elementContext";
 
 const Element = () => {
+  const [codeNavDatas, setCodeNavData] = useState(); //code:CODE option from NAV, Nav:nav from CODE, Datas: data
+  const [codeCodeDatas, setCodeCodeData] = useState();
+  const [codeTableDatas, setCodeTableData] = useState();
+
   return (
-    <div>
+    <ElementContext.Provider
+      value={{
+        codeNavData: [codeNavDatas, setCodeNavData],
+        codeCodeData: [codeCodeDatas, setCodeCodeData],
+        codeTableData: [codeTableDatas, setCodeTableData],
+      }}
+    >
+    <Container>
       <Nav />
       <Outlet />
-    </div>
-  )
-}
+    </Container>
+    </ElementContext.Provider>
+  );
+};
 
-export default Element
+export default Element;
+
+const Container = styled.div`
+  // background-color: #202020;
+`

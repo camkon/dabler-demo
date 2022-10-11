@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <div className='header-container'>
       <div className="header-left">
-        <img src={menu} alt="menu" className='header-menu' />
+        <img src={menu} alt="menu" className='header-menu'/>
         <img src={logo} alt="logo" className='header-logo' onClick={() => {navigate('/')}}/>
       </div>
       <div className="header-right">
