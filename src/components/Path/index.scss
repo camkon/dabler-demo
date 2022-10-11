@@ -2,29 +2,62 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
     height: 3.25rem;
     width: 100%;
     padding: 0 2rem;
     background-color: #fff;
+    z-index: 11; //9 || 11 //top: 10(header)
 
     .path-left {
         display: flex;
-        align-items: center; //flex-end
+        align-items: flex-end; //flex-end
         justify-content: flex-start;
         font-family: opensans;
         
         .indi-paths {
             display: flex;
-            align-items: center; //flex-end
+            align-items: flex-end; //flex-end
             justify-content: flex-start;
+            cursor: pointer;
+            color: #191d23;
+            font-size: 1rem;
             // background-color: red;
             
             .path-navicon {
-                height: 1.5rem;
+                height: 1.25rem;
+                margin-right: 0.5rem;
+            }
+        }
+    }
+
+    .path-right {
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+
+        .path-button {
+            padding: 0.4rem 1rem;
+            margin-left: 1rem;
+            background-color: #06ca6b;
+            border: none;
+            border-radius: 0.25rem;
+            font-size: 0.85rem;
+            font-family: lato;
+            font-weight: 600;
+            color: #fff;
+            text-shadow: 0px 2px 3px grey;
+
+            &:hover {
+                cursor: pointer;
+                text-shadow: none;
+                background-color: #05ae5c;
             }
 
-            &:first-child {color: #23496c;font-size: 1.25rem;font-weight: 900;}
-            &:nth-child(2) {color: #191d23;font-size: 1.1rem;font-weight: 900;}
+            &:nth-child(2) {
+                background-color: #5b93ff;
+            }
         }
     }
 }

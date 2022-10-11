@@ -2,10 +2,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 4rem;
+    position: sticky;
+    top: 0;
+    height: 3.5rem;
     width: 100%;
     padding: 0 1.5rem;
     background-color: #26C0E2;
+    z-index: 10;
 
     .header-left {
         display: flex;
@@ -20,7 +23,7 @@
         }
         
         .header-logo {
-            height: 2.25rem;
+            height: 2rem;
             margin: 0.2rem 0 0 1.25rem;
             cursor: pointer;
         }
@@ -28,16 +31,16 @@
 
     .header-right {
         height: auto;
-        width: 11.5rem;
-        font-family: nunito;
+        width: 10rem;
+        font-family: lato;
         cursor: pointer;
         
         .header-name {
             color: #3A3737;
-            font-weight: 600;
         }
         
         .header-title {
+            font-size: 0.85rem;
             color: #5b5b5b;
         }
     }
