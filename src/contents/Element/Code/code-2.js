@@ -14,6 +14,7 @@ const Code = () => {
 
     useEffect(() => {
         insertText(navData)
+        setNavData('')
     }, [navData])
 
 	const insertText = (text) => {
@@ -50,8 +51,10 @@ const Code = () => {
                     codeRef.current = editor
                     setMonacoInstance(editor)
                 }}
+                options={{
+                    scrollBeyondLastLine: false
+                }}
                 onChange={(value, event) => {
-                    console.log(value);
                     setCodeData(value)
                 }}
             />

@@ -4,46 +4,42 @@ import { ElementContext } from "../../../utils/elementContext";
 
 const Data = () => {
   const { codeTableData } = useContext(ElementContext);
-  const [codeTable, setTable] = codeTableData;
+  const [codeTable, setCodeTable] = codeTableData;
+  // const [codeTable, setCodeTable] = useState(JSON.parse(localStorage.getItem('table-data')));
 
-  useEffect(() => {
-    console.log('data recieved from Nav using ',codeTable);
-  }, [codeTable])
-
-  // const data = JSON.parse(localStorage.getItem("table-data"));
   var tableValues = new Array();
   const [tableKeys, setTableKeys] = useState([]);
   const [tableValuesSet, setTableValuesSet] = useState([]);
 
-  useEffect(() => {
-    if (codeTable != undefined) {
-      setTableKeys(Object.keys(codeTable[0]));
-      codeTable.map((i) => {
-        tableValues.push(Object.values(i));
-      });
-      setTableValuesSet(tableValues);
-    }
-  }, [codeTable]);
+  // useEffect(() => {
+  //   if (codeTable != undefined) {
+  //     setTableKeys(Object.keys(codeTable[0]));
+  //     codeTable.map((i) => {
+  //       tableValues.push(Object.values(i));
+  //     });
+  //     setTableValuesSet(tableValues);
+  //   }
+  // }, [codeTable]);
 
   if (codeTable != undefined) {
+
     return (
       <div className="codedata-container">
-        <div className="code-data-th1">
-          {tableKeys && tableKeys.map((i) => {
-            return <div className="code-data-th2">{i}</div>;
-          })}
-        </div>
-        <div className="code-data-td1">
-          {tableValuesSet && tableValuesSet.map((data) => {
-            return (
-              <div className="code-data-td2">
-                {data.map((i) => {
-                  return <div className="code-data-td3">{i}</div>;
-                })}
-              </div>
-            );
-          })}
-        </div>
+        <table className="">
+          <tr key={"header"}>
+            {Object.keys(codeTable[0]).map((key) => (
+              <th>{key.toUpperCase()}</th>
+            ))}
+          </tr>
+          {codeTable.map((item) => (
+            <tr key={item.id}>
+              {Object.values(item).map((val) => (
+                <td>{val}</td>
+              ))}
+            </tr>
+          ))}
+        </table>
+     
       </div>
     );
   } else {
