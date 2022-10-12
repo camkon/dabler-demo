@@ -1,37 +1,44 @@
-import React, {useContext, useEffect} from 'react'
+import React, {useContext, useEffect, useRef} from 'react'
 import MonacoEditor from '@uiw/react-monacoeditor'
 import './styles/code.scss'
 import { ElementContext } from '../../../utils/elementContext'
+
 const Code = () => {
 
   const {codeNavData, codeCodeData} = useContext(ElementContext)
   const [navData, setNavData] = codeNavData
   const [codeData, setCodeData] = codeCodeData
 
-  useEffect(() => {
-    console.log(codeData); 
-  }, [codeData])
+  const codeRef = useRef()
+
+  // useEffect(() => {
+     
+  // })
 
   return (
     <div className='codec-container'>
       <MonacoEditor
-        language="mysql"
+        ref={codeRef}
+        language="javascript"
         width={'100%'}
-        value={navData}
+        // value={navData}
         options={{
           theme: 'vs',
-          minimap: null,
-          selectionClipboard: true,
-          smartSelect: true,
           snippetSuggestions: 'bottom',
-          renderLineHighlightOnlyWhenFocus: true,
           cursorSmoothCaretAnimation: true,
-          formatOnPaste: true,
-          formatOnType: true,
         }}
-        onChange={(newValue, e) => {
-          setCodeData(newValue)
-        }}
+        editorDidMount={(editor, monaco) => {
+          codeRef.editor = editor
+          console.log(codeRef.editor);
+        }} 
+        onChange={(value, event) => {
+          // setCodeData(value)
+          var selection = codeRef.current.getSelection();
+          var id = { major: 1, minor: 1 };             
+          var text = `${navData}`;
+          var op = {identifier: id, range: selection, text: text, forceMoveMarkers: true};
+          codeRef.current.executeEdits("my-source", [op]);
+        }}        
       />
     </div>
   )

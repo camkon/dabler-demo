@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Nav from './nav'
-import Code from './code'
+import Code from './code-2'
 import Data from './data'
 import './styles/index.scss'
 
